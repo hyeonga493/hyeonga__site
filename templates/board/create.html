@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block con %}
+    <h2><b>게시글 작성</b></h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3 mt-5">
+            <label class="form-label"><b>제목</b></label>
+            <input type="text" name="sub" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><b>작성자</b></label>
+            <input type="text" class="form-control" value="{{ user }}" disabled>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><b>내용</b></label>
+            <textarea class="form-control" name="con" style="height: 250px;"></textarea>
+        </div>
+        <div class="text-end mt-3 ">
+            <button class="btn btn-primary" >생성</button>
+        </div>
+    </form>
+{% endblock %}

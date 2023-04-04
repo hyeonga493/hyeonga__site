@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block con %}
+    <h2><b>투표 생성</b></h2>
+    <form method="post">
+        {% csrf_token %}
+        <input name='sub' type="text" placeholder="투표 제목을 입력하세요." class="form-control mt-5">
+        <input type="text" value="{{user}}" disabled class="form-control mt-3 mb-3">
+        <textarea name='scon' class="form-control" style="height: 200px;" placeholder="투표 내용을 입력하세요."></textarea>
+
+        <div class="text-end mt-4">
+            <a href="{% url 'vote:index' %}"><button type="button" class="btn btn-secondary">목록으로</button></a>
+            <button type="button" onclick="makecho()" class="btn btn-primary">보기 추가</button>
+            <button class="btn btn-danger">투표 생성</button>
+        </div>
+
+        <div id="here" class="row mt-5"></div>
+    </form>
+
+    <script>
+        function makecho(){
+            d = document.getElementById("here");
+            n = document.createElement("div");
+            n.setAttribute("class", "col-sm-4");
+            n.innerHTML = "<input type='text' name='cname' placeholder='선택지를 입력하세요' class='form-control'>\
+            <textarea name='ccom' class='form-control mt-3 mb-5' placeholder='추가 설명'></textarea>";
+            d.appendChild(n);
+        }
+    </script>
+{% endblock %}

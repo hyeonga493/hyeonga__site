@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block con %}
+    <h2><b>게시글수정</b></h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3 mt-5">
+            <label class="form-label"><b>제목</b></label>
+            <input name='sub' type="text" value='{{b.subject}}' class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><b>작성자</b></label>
+            <input name='swri' type="text" class="form-control" disabled value="{{ b.writer }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><b>내용</b></label>
+            <textarea name='con' class="form-control" style="height: 150px;">{{b.content}}</textarea>
+        </div>
+        <div class="text-end mt-3">
+            <button class="btn btn-dark">수정</button>
+            <a href="{% url 'board:detail' b.id %}"><button class="btn btn-danger">취소</button></a>
+        </div> 
+    </form>
+{% endblock %}

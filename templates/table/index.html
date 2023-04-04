@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block con %}
+    <h2><b>표 작성</b></h2>
+
+    <div class="text-end">
+        <a href="{% url 'table:create' %}" class="btn btn-primary"> + 추가 </a>
+    </div>
+    <table class="table table-hover mt-4">
+        <thead>
+            <tr class="table-primary">
+                <th></th>
+                <th scope="col">주 소</th>
+                <th scope="col">면 적</th>
+                <th scope="col">금 액</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in tset %}
+                <tr>
+                    <td></td>
+                    <td><b>{{ i.주소 }}</b></td>
+                    <td>{{ i.면적}}</td>
+                    <td>{{ i.가격 }}</td>
+                    <td><a href="{% url 'table:detail' i.id %}"><button class="btn btn-primary btn-sm">보기</button></a></td>
+                    <td><a href="{% url 'table:delete' i.id %}"><button class="btn btn-danger btn-sm">삭제</button></a></td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <th>첫 번째 게시글을 작성해주세요.</th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

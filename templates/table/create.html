@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block con %}
+    <h2><b>표 작성</b></h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="col col-form-label"><b>작성자</b></label>
+            <input type="text" class="form-control" value="{{ user }}" disabled>
+        </div>
+        <div class="mb-3">
+            <input type="text" name="주소" class="form-control" placeholder="주소를 입력하세요">
+        </div>
+        <div class="mb-3">
+            <input type="text" name="면적" class="form-control" placeholder="면적을 입력하세요">
+        </div>
+        <div class="mb-3">
+            <input type="text" name="가격" class="form-control" placeholder="금액을 입력하세요">
+        </div>
+        <div class="mb-3">
+            <input type="text" name="종류" class="form-control" placeholder="건물 종류 : 공동주택/아파트/빌라">
+        </div>
+        <div class="mb-3">
+            <input type="text" name="층수" class="form-control" placeholder="해당 층/ 총 층수">
+        </div>
+        <div class="mb-3">
+            <input type="text" name="입주가능일" class="form-control" placeholder="입주 가능 날짜를 입력하세요">
+        </div>
+        <div class="mb-3">
+            <input type="text" name="방수" class="form-control" placeholder="방 개수/ 욕실 개수">
+        </div>
+        <div class="mb-3">
+            <input type="text" name="사용승인" class="form-control" placeholder="사용 승인 날짜를 입력하세요">
+        </div>
+        <div class="mb-3">
+            <input type="text" name="난방" class="form-control" placeholder="개별/중앙 난방">
+        </div>
+        <div class="mb-3">
+            <input type="text" name="방향" class="form-control" placeholder="방향을 입력하세요">
+        </div>
+        <div class="mb-3">
+            <input type="text" name="주차" class="form-control" placeholder="세대당 / 전체">
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><b>비고</b></label>
+            <textarea type="text" name="비고" class="form-control" placeholder="비고를 입력하세요"></textarea>
+        </div>
+        <div class="text-end mt-3">
+            <button class="btn btn-primary btn-lg">생성</button>
+        </div>
+    </form>
+
+
+
+{% endblock %}

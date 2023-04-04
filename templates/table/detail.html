@@ -1,0 +1,105 @@
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
+
+{% extends 'base.html' %}
+{% block con %}
+    <head>
+        <style>
+            .box {
+                box-sizing: 300px;
+                background-color:rgb(214, 230, 253);
+                height: 70px;
+                padding: 20px;
+            }
+            .box2 {
+                box-sizing: 300px;
+                background-color:rgb(234, 242, 253);
+                height: 70px;
+                padding: 20px
+            }
+        </style>
+    </head>
+    <h2 style="text-align: center;"><b><b>{{t.주소}}</b></b></h2>
+
+    <div class="mt-5 mx-auto d-grid" style="width: 800px;">
+        <article>
+            
+            <div class="card w-80">
+                <div  class="mt-3 mx-auto container text-center row" >
+                    <div class="box col-4 border border-1 border-primary "  ><h4><b>주 소</b></h4></div>
+                    <div class="box2 col-8 border border-1 border-primary"  ><h4><b>{{ t.주소 }}</b></h4></div>
+                </div>
+                <div  class="mx-auto container text-center row" >
+                    <div class="box col-4 border border-1 border-primary "  ><h4><b>면 적</b></h4></div>
+                    <div class="box2 col-8 border border-1 border-primary"  ><h4><b>{{ t.면적 }}</b></h4></div>
+                </div>
+                <div  class="mx-auto container text-center row" >
+                    <div class="box col-4 border border-1 border-primary "  ><h4><b>금 액</b></h4></div>
+                    <div class="box2 col-8 border border-1 border-primary"  ><h4><b>{{ t.가격 }}</b></h4></div>
+                </div>
+                <div  class="mx-auto container text-center row" >
+                    <div class="box col-4 border border-1 border-primary "  ><h4><b>종 류</b></h4></div>
+                    <div class="box2 col-8 border border-1 border-primary"  ><h4><b>{{ t.종류 }}</b></h4></div>
+                </div>
+                <div  class="mx-auto container text-center row" >
+                    <div class="box col-4 border border-1 border-primary "  ><h4><b>해당 층수 / 총 층수</b></h4></div>
+                    <div class="box2 col-8 border border-1 border-primary"  ><h4><b>{{ t.층수 }}</b></h4></div>
+                </div>
+                <div  class="mx-auto container text-center row" >
+                    <div class="box col-4 border border-1 border-primary "  ><h4><b>방 개수/ 욕실 개수</b></h4></div>
+                    <div class="box2 col-8 border border-1 border-primary"  ><h4><b>{{ t.방수 }}</b></h4></div>
+                </div>
+                <div  class="mx-auto container text-center row" >
+                    <div class="box col-4 border border-1 border-primary " style="padding:10px"><h4><b>세대당 주차 대수 / 전체 세대</b></h4></div>
+                    <div class="box2 col-8 border border-1 border-primary"  ><h4><b>{{ t.주차 }}</b></h4></div>
+                </div>
+                <div  class="mx-auto container text-center row" >
+                    <div class="box col-4 border border-1 border-primary "  ><h4><b>난 방</b></h4></div>
+                    <div class="box2 col-8 border border-1 border-primary"  ><h4><b>{{ t.난방 }}</b></h4></div>
+                </div>
+                <div  class="mx-auto container text-center row" >
+                    <div class="box col-4 border border-1 border-primary "  ><h4><b>방 향</b></h4></div>
+                    <div class="box2 col-8 border border-1 border-primary"  ><h4><b>{{ t.방향 }}</b></h4></div>
+                </div>
+                <div  class="mx-auto container text-center row" >
+                    <div class="box col-4 border border-1 border-primary "  ><h4><b>입주 가능 날짜</b></h4></div>
+                    <div class="box2 col-8 border border-1 border-primary"  ><h4><b>{{ t.입주가능일 }}</b></h4></div>
+                </div>
+                <div  class="mx-auto container text-center row" >
+                    <div class="box col-4 border border-1 border-primary "  ><h4><b>사용 승인 날짜</b></h4></div>
+                    <div class="box2 col-8 border border-1 border-primary"  ><h4><b>{{ t.사용승인 }}</b></h4></div>
+                </div>
+                <div  class="mx-auto container text-center row" >
+                    <div class="box col-4 border border-1 border-primary " style="height: 100px;" ><h4><b>비 고</b></h4></div>
+                    <div class="box2 col-8 border border-1 border-primary text-wrap" style="height: 100px;" ><h4><b>{{ t.비고 }}</b></h4></div>
+                </div>
+                <div class="card-body" style="text-align: center;">
+                    <h1 class="card-title" style="text-align: center;"><b>SK 부동산</b></h1>
+                    <p class="card-text fw-normal fs-4">춘천시 후석로 326 M타워 112호(후평동)<br>등록번호 가3702-1643<br>T. (033) 255-4989<br><b>상담 연락처 010-8918-0041</b></p>
+                </div>
+            </div>
+        </article> 
+
+        <a id="target" style="display: none"></a>   
+        <input type="button" class="btn btn-danger btn-lg " style="text-align: center;">
+    </div>
+    <script>
+        $(":button").on('click', function(e) {
+          html2canvas(e.target.parentElement).then(function(canvas) {
+            if (navigator.msSaveBlob) {
+              var blob = canvas.msToBlob(); 
+              return navigator.msSaveBlob(blob, 'Image.jpg'); 
+            } else { 
+              var el = document.getElementById("target");
+              el.href = canvas.toDataURL("image/jpeg");
+              el.download ='이미지.jpg';
+              el.click();
+            }
+          });
+        });
+    </script>
+        
+{% endblock %}
+

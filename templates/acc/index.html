@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block con %}
+    {% if user.is_authenticated %}
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold">형아의 홈페이지에 오신 것을 환영합니다.</h1>
+                <p class="col-md-8 fs-4">{{user}}님 안녕하세요!</p>
+            </div>
+        </div>
+        <div class="p-3 mb-3 ">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item list-group-item-action" >
+                    <a class="nav-link active" href="{% url 'acc:index' %}"><h4>메인</h4></a>
+                </li>
+                <li class="list-group-item list-group-item-action">
+                    <a class="nav-link active" href="{% url 'board:index' %}"><h4>게시판</h4></a>
+                </li>
+                <li class="list-group-item list-group-item-action">
+                    <a class="nav-link active" href="{% url 'vote:index' %}"><h4>투표</h4></a>
+                </li>
+                <li class="list-group-item list-group-item-action">
+                    <a class="nav-link active" href="{% url 'book:index' %}"><h4>즐겨찾기</h4></a>
+                </li>
+                <li class="list-group-item list-group-item-action">
+                    <a class="nav-link active" href="{% url 'trans:index' %}"><h4>번역기</h4></a>
+                </li>
+            </ul>
+        </div>
+    {% else %}
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold">형아의 홈페이지에 오신 것을 환영합니다.</h1>
+                <br>
+                <p class="col-md-8 fs-4">서비스를 이용하기 위해서는 로그인이 필요합니다.</p>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

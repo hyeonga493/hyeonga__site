@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block con %}
+    <h2><b>음성 다운</b></h2>
+
+    <form method='post'>
+        {% csrf_token %}
+        <textarea name='bf' class='form-control mt-4' style='height:200px;' placeholder='변환할 문장을 입력해주세요'>{{bf}}</textarea>
+
+        <select name='to' class ='form-select mt-4'>
+            {% for code, name in ndict.items %}
+                <option value='{{code}}' {% if to %} {% if to == code %}selected{% endif %} {% else %} {% if code == 'ko' %}selected{% endif %} {% endif %}>{{ name|upper }}</option>
+            {% endfor %}
+        </select>
+
+        <button class='btn btn-dark' style='widthL100%'>변환하기</button>
+        {% if fn %}
+            <a href="/media/tts/{{fn}}.mp3" class='btn btn-success mt-4' style='widthL100%'>다운받기</a>
+        {% endif %}
+    </form>
+{% endblock %}
